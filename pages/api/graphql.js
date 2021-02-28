@@ -1,5 +1,16 @@
-import { gql } from "apollo-server-micro";
+import { gql, ApolloServer } from "apollo-server-micro";
 import axios from "axios";
+
+export const baseUrl = "https://hacker-news.firebaseio.com/v0/";
+export const newStoriesUrl = `${baseUrl}askstories.json`;
+export const storyUrl = `${baseUrl}item/`;
+
+export const selectFields = ({ by, title, text, score }) => ({
+  by,
+  title,
+  text,
+  score,
+});
 
 const getStory = async (storyId) => {
   const result = await axios.get(`${storyUrl + storyId}.json`);
@@ -39,12 +50,12 @@ const resolvers = {
   },
 };
 
-const apolloServer = new ApolloServer({ typeDefs, resolvers })
+const apolloServer = new ApolloServer({ typeDefs, resolvers });
 
 export const config = {
   api: {
     bodyParser: false,
   },
-}
+};
 
-export default apolloServer.createHandler({ path: '/api/graphql' })
+export default apolloServer.createHandler({ path: "/api/graphql" });

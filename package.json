@@ -7,11 +7,11 @@
     "start": "next start"
   },
   "dependencies": {
-    "apollo-server-micro": "2.11.0",
+    "apollo-server-micro": "^2.21.0",
+    "axios": "^0.21.1",
     "graphql": "14.6.0",
     "next": "latest",
     "react": "16.13.1",
-    "axios": "^0.21.1",
     "react-dom": "16.13.1",
     "swr": "0.1.18"
   },
